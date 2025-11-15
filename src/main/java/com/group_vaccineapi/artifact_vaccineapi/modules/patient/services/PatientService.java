@@ -5,6 +5,7 @@ import com.group_vaccineapi.artifact_vaccineapi.modules.patient.repositories.Pat
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,5 +24,27 @@ public class PatientService {
     // Listar todos
     public List<PatientEntity> getAllPatients(){
         return patientRepository.findAll();
+    }
+
+    // Buscar por ID
+    public PatientEntity getPatientById(Integer id){
+        Optional<PatientEntity> patient = patientRepository.findById(id);
+
+        if(patient.isPresent()){
+            return patient.get();
+        }
+
+        return null;
+    }
+
+    // Buscar por cpf
+    public Optional<PatientEntity> getPatientByCpf(String cpf){
+        Optional<PatientEntity> patient = patientRepository.findByCpf(cpf);
+
+        if(patient != null){
+            return patient;
+        }
+
+        return null;
     }
 }

@@ -30,4 +30,15 @@ public class PatientController {
         List<PatientEntity> patients = patientService.getAllPatients();
         return ResponseEntity.ok(patients);
     }
+
+    @GetMapping("/patients/{id}")
+    public ResponseEntity<PatientEntity> getPatientById(@RequestParam Integer idController){
+        PatientEntity patient = patientService.getPatientById(idController);
+
+        if(patient != null){
+            return ResponseEntity.ok(patient);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }
