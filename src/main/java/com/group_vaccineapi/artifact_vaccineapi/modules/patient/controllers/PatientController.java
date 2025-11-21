@@ -4,6 +4,7 @@ import com.group_vaccineapi.artifact_vaccineapi.modules.patient.dtos.PatientDTO;
 import com.group_vaccineapi.artifact_vaccineapi.modules.patient.entities.PatientEntity;
 import com.group_vaccineapi.artifact_vaccineapi.modules.patient.services.PatientService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,14 +32,15 @@ public class PatientController {
         return ResponseEntity.ok(patients);
     }
 
-    @GetMapping("/patients/{id}")
-    public ResponseEntity<PatientEntity> getPatientById(@RequestParam Integer idController){
-        PatientEntity patient = patientService.getPatientById(idController);
+    @GetMapping("/patient/{id}")
+    // @RequestParam não, precisei usar o @PathVariable
+    public ResponseEntity<PatientEntity> getPatientById(@PathVariable("id") Integer id){
+        PatientEntity patient = patientService.getPatientById(id);
 
-        if(patient != null){
+        if(patient != null) {
             return ResponseEntity.ok(patient);
+        } else {
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.notFound().build();
     }
 }

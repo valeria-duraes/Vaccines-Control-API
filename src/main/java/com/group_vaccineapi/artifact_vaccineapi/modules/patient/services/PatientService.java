@@ -33,7 +33,6 @@ public class PatientService {
         if(patient.isPresent()){
             return patient.get();
         }
-
         return null;
     }
 
