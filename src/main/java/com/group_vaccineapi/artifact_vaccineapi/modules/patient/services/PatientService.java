@@ -46,4 +46,23 @@ public class PatientService {
 
         return null;
     }
+
+    // Alterar dados do paciente
+    public PatientEntity updatePatientById(Integer id, PatientEntity newData){
+        // 1- Buscar o paciente pelo Id
+        PatientEntity existingPatient = patientRepository.findById(id).orElse(null);
+
+        if(existingPatient == null){
+            return null; // Controller vai retornar 404
+        }
+
+        // 2- Atualizar apenas os campos recebidos
+        existingPatient.setName(newData.getName());
+        existingPatient.setEmail(newData.getEmail());
+        existingPatient.setCpf(newData.getCpf());
+        existingPatient.setAge(newData.getAge());
+
+        // 3- Salvar no banco
+        return patientRepository.save(existingPatient);
+    }
 }

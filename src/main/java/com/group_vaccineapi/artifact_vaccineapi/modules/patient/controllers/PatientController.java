@@ -5,6 +5,7 @@ import com.group_vaccineapi.artifact_vaccineapi.modules.patient.entities.Patient
 import com.group_vaccineapi.artifact_vaccineapi.modules.patient.services.PatientService;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,17 @@ public class PatientController {
 
         if(patient != null) {
             return ResponseEntity.ok(patient);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/patient/edit/{id}")
+    public ResponseEntity<PatientEntity> updateController(@PathVariable Integer id, @RequestBody PatientEntity patientData) {
+        PatientEntity updatedPatient = patientService.updatePatientById(id, patientData);
+
+        if(patientData != null) {
+            return ResponseEntity.ok(updatedPatient);
         } else {
             return ResponseEntity.notFound().build();
         }
