@@ -46,7 +46,7 @@ public class PatientController {
     }
 
     @PutMapping("/patient/edit/{id}")
-    public ResponseEntity<PatientEntity> updateController(@PathVariable Integer id, @RequestBody PatientEntity patientData) {
+    public ResponseEntity<PatientEntity> updatePatientById(@Valid @PathVariable Integer id, @RequestBody PatientEntity patientData) {
         PatientEntity updatedPatient = patientService.updatePatientById(id, patientData);
 
         if(patientData != null) {
@@ -54,5 +54,10 @@ public class PatientController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @DeleteMapping("/patient/delete/{id}")
+    public void deletePatientById(@PathVariable Integer id){
+        patientService.deletePatientById(id);
     }
 }

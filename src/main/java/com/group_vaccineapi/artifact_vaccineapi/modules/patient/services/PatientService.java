@@ -3,6 +3,7 @@ package com.group_vaccineapi.artifact_vaccineapi.modules.patient.services;
 import com.group_vaccineapi.artifact_vaccineapi.modules.patient.entities.PatientEntity;
 import com.group_vaccineapi.artifact_vaccineapi.modules.patient.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -65,4 +66,12 @@ public class PatientService {
         // 3- Salvar no banco
         return patientRepository.save(existingPatient);
     }
+
+    // Deletar
+    public void deletePatientById(Integer id){
+        patientRepository.deleteById(id);
+    }
+
+
+
 }
