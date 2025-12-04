@@ -22,7 +22,7 @@ public class PatientService {
         return patientRepository.save(patient);
     }
 
-    // Listar todos
+    // Listar todos, retorna uma (List<>)
     public List<PatientEntity> getAllPatients(){
         return patientRepository.findAll();
     }

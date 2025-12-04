@@ -37,7 +37,7 @@ public class PatientController {
     // @RequestParam não, precisei usar o @PathVariable
     public ResponseEntity<PatientEntity> getPatientById(@PathVariable("id") Integer id){
         PatientEntity patient = patientService.getPatientById(id);
-
+        
         if(patient != null) {
             return ResponseEntity.ok(patient);
         } else {

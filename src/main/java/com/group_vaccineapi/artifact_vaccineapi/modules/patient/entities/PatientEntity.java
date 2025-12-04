@@ -3,7 +3,6 @@ package com.group_vaccineapi.artifact_vaccineapi.modules.patient.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -33,7 +32,7 @@ public class PatientEntity {
     @Column(name = "cpf", unique = true, nullable = false)
     private String cpf;
 
-    @Size(min= 1, max = 150, message = "A idade mínima é de 1 e máxima de 150!")
+//    @Size(min= 1, max = 150, message = "A idade mínima é de 1 e máxima de 150!")
     @Column(name = "age")
     private Integer age;
 }
