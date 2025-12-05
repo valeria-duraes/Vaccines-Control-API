@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api") // 🔹 endpoint base: /patients
+@RequestMapping("/api") // endpoint base: /patients
 public class PatientController {
     private final PatientService patientService;
 
