@@ -65,5 +65,4 @@ public class VaccineService {
         // salva no banco
         return vaccineRepository.save(updatedVaccine);
     }
-
 }

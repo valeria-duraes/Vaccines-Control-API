@@ -40,10 +40,9 @@ public class VaccineController {
         service.deleteVaccine(id);
     }
 
-//    @PutMapping("/vaccine/{id}")
-//    public VaccineEntity updateVaccine(@PathVariable Integer id,@RequestBody VaccineEntity updatedVaccine){
-//        return service.updateVaccine(id, updatedVaccine);
-//    }
-
+    @PutMapping("/vaccine/edit/{id}")
+    public VaccineEntity updateVaccine(@PathVariable Integer id,@RequestBody VaccineEntity updatedVaccine) {
+        return service.updateVaccine(updatedVaccine, id);
+    }
 
 }
