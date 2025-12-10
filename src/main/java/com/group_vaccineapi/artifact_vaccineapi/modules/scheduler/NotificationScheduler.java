@@ -5,8 +5,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NotificationScheduler {
-    @Scheduled(fixedRate = 10000)
-    public void sendTestEmail() {
-        System.out.println("Sending test email: " + System.currentTimeMillis());
+
+    private final EmailService emailService;
+
+    public NotificationScheduler(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
+    @Scheduled(fixedRate = 60000)
+    public void notifyUser() {
+        emailService.sendEmail(
+        "valleriaduraes@hotmail.com",
+        "Aviso automático",
+        "Essa é uma mensagem enviada automaticamente pelo sistema."
+        );
     }
 }
